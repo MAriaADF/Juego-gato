@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Hellen Lopez A
+ * @author Hellen Lopez A -Alejandro salas
  */
 public class Menu_Principal extends javax.swing.JFrame {
 
