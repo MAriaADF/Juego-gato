@@ -20,7 +20,7 @@ public class Menu_Principal extends javax.swing.JFrame {
     public Menu_Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
-         this.getContentPane().setBackground(Color.black);//Hace de color negro el fondo
+        this.getContentPane().setBackground(Color.black);//Hace de color negro el fondo
     }
 
     /**
@@ -69,6 +69,11 @@ public class Menu_Principal extends javax.swing.JFrame {
         rbnResvisar.setFont(new java.awt.Font("Corbel", 3, 18)); // NOI18N
         rbnResvisar.setForeground(new java.awt.Color(255, 255, 255));
         rbnResvisar.setText("Revisar lista de jugadores");
+        rbnResvisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbnResvisarActionPerformed(evt);
+            }
+        });
 
         rbnEstadistica.setBackground(new java.awt.Color(0, 0, 0));
         rbnEstadistica.setFont(new java.awt.Font("Corbel", 3, 18)); // NOI18N
@@ -157,6 +162,10 @@ public class Menu_Principal extends javax.swing.JFrame {
         area.setVisible(true);//hace el JFrame de area de juego visble
         this.setVisible(false);// hace el JFrame  Menu_Principal invisible
     }//GEN-LAST:event_rbnContinuaActionPerformed
+
+    private void rbnResvisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnResvisarActionPerformed
+        
+    }//GEN-LAST:event_rbnResvisarActionPerformed
 
     /**
      * @param args the command line arguments

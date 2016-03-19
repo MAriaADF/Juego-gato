@@ -127,6 +127,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Revisar lista de jugadores"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbnResvisarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbnEstadistica">
       <Properties>
