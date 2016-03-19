@@ -13,11 +13,14 @@ public class Conexion {
  protected Connection con;
  protected Statement st;
  protected ResultSet rs;
+ public static Conexion cone = new Conexion();
+ 
     public Conexion() {
+        
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection("jdbc:sqlserver://HELLEN\\SQLEXPRESSS:1433;databaseName=gato;user=sa; password=123456;");
-            st= con.createStatement();
+            this.con = DriverManager.getConnection("jdbc:sqlserver://HELLEN\\SQLEXPRESSS:1433;databaseName=gato;user=sa; password=123456;");
+            this.st= con.createStatement();
             System.out.println("Conectado.");
         }catch (Exception ex) {
             System.out.println("Error." + ex.getMessage());
