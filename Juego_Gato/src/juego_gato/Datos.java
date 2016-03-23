@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package juego_gato;
 
 import java.awt.Color;
@@ -14,6 +10,9 @@ import javax.swing.JOptionPane;
  * @author Hellen Lopez A-Alejandro Salas
  */
 public class Datos extends javax.swing.JFrame {
+
+    
+   
     /**
      * Creates new form Datos
      */
@@ -39,29 +38,46 @@ public class Datos extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         Cancelar = new javax.swing.JButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        cmbRegis2 = new javax.swing.JComboBox();
+        cmbRegis1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(410, 335));
+        getContentPane().setLayout(null);
 
         txtJugador2.setBackground(new java.awt.Color(0, 0, 0));
         txtJugador2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtJugador2.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(txtJugador2);
+        txtJugador2.setBounds(490, 250, 142, 28);
 
         jLbVS.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLbVS.setForeground(new java.awt.Color(255, 255, 255));
         jLbVS.setText("VS");
+        getContentPane().add(jLbVS);
+        jLbVS.setBounds(250, 70, 70, 58);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Jugador 1");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(90, 170, 79, 22);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Jugador 2");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(420, 170, 79, 22);
 
         txtJugador1.setBackground(new java.awt.Color(0, 0, 0));
         txtJugador1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtJugador1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(txtJugador1);
+        txtJugador1.setBounds(150, 250, 135, 28);
 
         btnSiguiente.setText("Siguiente");
         btnSiguiente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -74,10 +90,16 @@ public class Datos extends javax.swing.JFrame {
                 btnSiguienteActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSiguiente);
+        btnSiguiente.setBounds(170, 310, 90, 30);
 
         jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Hellen Lopez A\\Pictures\\personaB.png")); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(410, 40, 98, 108);
 
         jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Hellen Lopez A\\Pictures\\personaB.png")); // NOI18N
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(80, 40, 98, 108);
 
         Cancelar.setText("Cancelar");
         Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -90,66 +112,37 @@ public class Datos extends javax.swing.JFrame {
                 CancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(Cancelar);
+        Cancelar.setBounds(380, 300, 90, 30);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jLbVS, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel2)
-                        .addGap(136, 136, 136)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(txtJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87)
-                        .addComponent(txtJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)))
-                .addGap(18, 18, 18))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLbVS))
-                    .addComponent(jLabel5))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel2))
-                    .addComponent(jLabel4))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(txtJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("Jugador Registrado");
+        getContentPane().add(jRadioButton1);
+        jRadioButton1.setBounds(20, 210, 120, 23);
+
+        jRadioButton2.setText("Nuevo jugador");
+        jRadioButton2.setToolTipText("");
+        getContentPane().add(jRadioButton2);
+        jRadioButton2.setBounds(20, 250, 120, 23);
+
+        jRadioButton3.setSelected(true);
+        jRadioButton3.setText("Jugador Registrado");
+        getContentPane().add(jRadioButton3);
+        jRadioButton3.setBounds(360, 210, 120, 23);
+
+        jRadioButton4.setText("Nuevo jugador");
+        jRadioButton4.setToolTipText("");
+        getContentPane().add(jRadioButton4);
+        jRadioButton4.setBounds(360, 250, 120, 23);
+
+        cmbRegis2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cmbRegis2);
+        cmbRegis2.setBounds(490, 210, 140, 20);
+
+        cmbRegis1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cmbRegis1);
+        cmbRegis1.setBounds(150, 210, 130, 20);
+        cmbRegis1.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -159,10 +152,14 @@ public class Datos extends javax.swing.JFrame {
         if((txtJugador1.getText().isEmpty())||(txtJugador2.getText().isEmpty())){
             JOptionPane.showMessageDialog(null, "Por favor ingrese los datos que se le solicitan");
         }else{
+//            if(gato.BuscarNombre(txtJugador1.getText())> 0){
+//                JOptionPane.showMessageDialog(null, "ya existe");
+//             }else{
                 gato.Insertar(txtJugador1.getText(), txtJugador2.getText());//Inserta los datos de los jugadores
                 JOptionPane.showMessageDialog(null, "se guardaron los datos");
                 new Rifaa().setVisible(true);// hace el panel de rifa visible
                 this.setVisible(false);
+//            }
         }        
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
@@ -175,7 +172,8 @@ public class Datos extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelarMouseClicked
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-        // TODO add your handling code here:
+        new Menu_Principal().setVisible(true);// hace el el menuprincipal visible
+        this.setVisible(false);
     }//GEN-LAST:event_CancelarActionPerformed
 
     /**
@@ -216,11 +214,17 @@ public class Datos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancelar;
     private javax.swing.JButton btnSiguiente;
+    private javax.swing.JComboBox cmbRegis1;
+    private javax.swing.JComboBox cmbRegis2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLbVS;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
     public static java.awt.TextField txtJugador1;
     public static java.awt.TextField txtJugador2;
     // End of variables declaration//GEN-END:variables
