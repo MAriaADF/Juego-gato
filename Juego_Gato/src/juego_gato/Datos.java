@@ -1,6 +1,12 @@
 package juego_gato;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import juego_gato.Jugador;
+import juego_gato.Menu_Principal;
+import juego_gato.Rifaa;
 
 /**
  *
@@ -10,9 +16,11 @@ public class Datos extends javax.swing.JFrame {
     /**
      * Creates new form Datos
      */
+    Jugador jugador = new Jugador();
     public Datos() {
         initComponents();
         this.getContentPane().setBackground(Color.black);//Hace de color negro el fondo
+        jugador.CargarCombo(cmbRegis1, cmbRegis2);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,7 +48,6 @@ public class Datos extends javax.swing.JFrame {
         cmbRegis1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(410, 335));
         getContentPane().setLayout(null);
 
         txtJugador2.setBackground(new java.awt.Color(0, 0, 0));
@@ -139,11 +146,9 @@ public class Datos extends javax.swing.JFrame {
         getContentPane().add(rboJ2Nuevo);
         rboJ2Nuevo.setBounds(360, 250, 120, 23);
 
-        cmbRegis2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cmbRegis2);
         cmbRegis2.setBounds(490, 210, 140, 20);
 
-        cmbRegis1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cmbRegis1);
         cmbRegis1.setBounds(150, 210, 130, 20);
         cmbRegis1.getAccessibleContext().setAccessibleName("");
@@ -153,26 +158,21 @@ public class Datos extends javax.swing.JFrame {
     Jugador Jugador = new Jugador();
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         if(rboJ1Nuevo.isSelected()== true || rboJ1Regis.isSelected()== true){
-            if(txtJugador1.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null,"Debe de llenar correctamente los datos de jugador 1");
+            if (rboJ1Nuevo.isSelected()== true){
+                if(txtJugador1.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null,"Debe de llenar correctamente los datos de jugador 1");
+                }
             }
-        }else if(rboJ2Nuevo.isSelected()== true || rboJ2Regis.isSelected()== true){
-             if(txtJugador2.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null,"Debe de llenar correctamente los datos de jugador 2");
-            }
-        }else{
-            new Rifaa().setVisible(true);// hace el panel de rifa visible
-                this.setVisible(false);
-        }
-        
-        
-//            if(gato.BuscarNombre(txtJugador1.getText())> 0){
-//                JOptionPane.showMessageDialog(null, "ya existe");
-//             }else{
-                
-                
-//            }
-              
+        }  
+        if(rboJ2Nuevo.isSelected()== true || rboJ2Regis.isSelected()== true){
+            if (rboJ2Nuevo.isSelected()== true){
+                if(txtJugador2.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null,"Debe de llenar correctamente los datos de jugador 2");
+                }
+            }new Rifaa().setVisible(true);// hace el panel de rifa visible
+            this.setVisible(false);
+                }
+         
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiguienteMouseClicked
@@ -189,21 +189,30 @@ public class Datos extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void txtJugador1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtJugador1FocusLost
-    if(txtJugador1.getText().isEmpty()){
-     JOptionPane.showMessageDialog(null,"Debe de llenar el campo de jugador 1");
-    }else{
-     Jugador.InsertarJugador(txtJugador1.getText());//Inserta los datos de los jugadores
-     txtJugador1.enable(false);  
-    }
+       if(txtJugador1.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Debe de llenar correctamente los datos de jugador 1");
+       }else{          
+            if(Jugador.BuscarNombre(txtJugador1.getText())>0){
+              JOptionPane.showConfirmDialog(null,"Ya estas registrado " );
+            }else{
+                Jugador.InsertarJugador(txtJugador1.getText());//Inserta los datos de los jugadores
+                txtJugador1.enable(false);
+            }
+       }
     }//GEN-LAST:event_txtJugador1FocusLost
 
+            
     private void txtJugador2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtJugador2FocusLost
-     if(txtJugador1.getText().isEmpty()){
-     JOptionPane.showMessageDialog(null,"Debe de llenar el campo de jugador 1");
-    }else{
-     Jugador.InsertarJugador(txtJugador1.getText());//Inserta los datos de los jugadores
-     txtJugador1.enable(false);
-     }
+     if(txtJugador2.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Debe de llenar correctamente los datos de jugador 2");
+       }else{          
+            if(Jugador.BuscarNombre(txtJugador2.getText())>0){
+              JOptionPane.showConfirmDialog(null,"Ya estas registrado " );
+            }else{
+                Jugador.InsertarJugador(txtJugador2.getText());//Inserta los datos de los jugadores
+                txtJugador2.enable(false);
+            }
+       }
     }//GEN-LAST:event_txtJugador2FocusLost
 
     /**

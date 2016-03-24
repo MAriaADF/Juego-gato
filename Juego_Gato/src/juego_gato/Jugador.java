@@ -5,7 +5,11 @@
  */
 package juego_gato;
 
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,7 +23,7 @@ public class Jugador {
         Statement s;
         try {
             s= Conexion.cone.getCon().createStatement();
-            s.executeUpdate("INSERT INTO dbo.Datos_Jugador(Jugador_1)"
+            s.executeUpdate("INSERT INTO dbo.Datos_Jugadores(Nombre)"
                 + " VALUES('"+ Nombre +"')");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -29,7 +33,7 @@ public class Jugador {
      int cont = 0;
         try{
             conexion.rs = conexion.st.executeQuery("SELECT * FROM dbo.Datos_Jugadores where "
-                    + "Jugador_1 = '" + Nombre + "'");
+                    + "Nombre = '" + Nombre + "'");
                 while(conexion.rs.next())
                 {
                     cont++;
@@ -41,5 +45,17 @@ public class Jugador {
                JOptionPane.showConfirmDialog(null,"Ya estas registrado " );
             }
          return cont;
+    }
+    public void CargarCombo(JComboBox cmbRegis1,JComboBox cmbRegis2){
+     try {
+            conexion.rs = conexion.st.executeQuery("SELECT * FROM dbo.Datos_Jugadores");
+            while(conexion.rs.next())
+            {
+           cmbRegis1.addItem(conexion.rs.getString(1));
+           cmbRegis2.addItem(conexion.rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
