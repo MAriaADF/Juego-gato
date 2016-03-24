@@ -158,7 +158,7 @@ public class Menu_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_rbnIniciaActionPerformed
 
     private void rbnContinuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnContinuaActionPerformed
-        Area_Juego area = new Area_Juego();
+        Principal area = new Principal();
         area.setVisible(true);//hace el JFrame de area de juego visble
         this.setVisible(false);// hace el JFrame  Menu_Principal invisible
     }//GEN-LAST:event_rbnContinuaActionPerformed

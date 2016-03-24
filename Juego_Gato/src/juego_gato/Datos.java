@@ -92,14 +92,10 @@ public class Datos extends javax.swing.JFrame {
         });
         getContentPane().add(btnSiguiente);
         btnSiguiente.setBounds(170, 310, 90, 30);
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Hellen Lopez A\\Pictures\\personaB.png")); // NOI18N
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(410, 40, 98, 108);
-
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Hellen Lopez A\\Pictures\\personaB.png")); // NOI18N
+        jLabel5.setBounds(410, 40, 98, 0);
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(80, 40, 98, 108);
+        jLabel6.setBounds(80, 40, 98, 0);
 
         Cancelar.setText("Cancelar");
         Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {

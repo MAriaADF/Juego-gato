@@ -5,7 +5,6 @@
  */
 package juego_gato;
 
-import com.sun.glass.ui.Accessible;
 import java.awt.Color;
 import java.util.Random;
 import javax.swing.JOptionPane;
@@ -178,7 +177,6 @@ public class Rifaa extends javax.swing.JFrame {
     }
     public void GaneRifa(){
          
-             Area_Juego ins = new Area_Juego();
             //si jLbNumJuga1 y jLbNumJuga2 son diferente a vacio 
              
             if (!jLbNumJuga1.getText().isEmpty()&&!jLbNumJuga2.getText().isEmpty()){
@@ -187,7 +185,7 @@ public class Rifaa extends javax.swing.JFrame {
                } else {
                JOptionPane.showMessageDialog(null, "El jugador que inicia es " + Datos.txtJugador2.getText() + " con la letra X");
                }
-                ins.setVisible(true);//hace el JFrame de datos visble
+                new Principal().setVisible(true);//hace el JFrame de datos visble
                 this.setVisible(false);// hace el JFrame  Menu_Principal invisible
             }
         }

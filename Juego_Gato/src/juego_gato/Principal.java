@@ -492,7 +492,6 @@ public void verificar(String parametro)
             } 
             if(prueba){
                 prueba = false;
-                
                 break;
                 
             }
