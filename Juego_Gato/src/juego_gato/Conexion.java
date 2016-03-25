@@ -7,7 +7,7 @@ package juego_gato;
 import java.sql.*;
 /**
  *
- * @author Hellen Lopez A
+ * @author Hellen Lopez AAlejandro Salas
  */
 public class Conexion {
  protected Connection con;

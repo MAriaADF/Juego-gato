@@ -14,33 +14,6 @@ import java.sql.Statement;
  * @author Hellen Lopez A
  */
 public class gato {
- 
-    public void Insertar(String jugador1,String jugador2){
-        Statement s;
-        try {
-            s= Conexion.cone.getCon().createStatement();
-            s.executeUpdate("INSERT INTO dbo.Datos_Jugador(Jugador_1, Jugador_2)"
-                + " VALUES('"+ jugador1 +"','"+ jugador2+"')");
-        } catch (Exception ex) {
-        }         
-    }
-//    public int BuscarNombre(String jugador1){
-//     int cont = 0;
-//        try{
-//            conexion.rs = conexion.st.executeQuery("SELECT * FROM dbo.Datos_Jugador where "
-//                    + "Jugador_1 = '" + jugador1 + "'");
-//                while(conexion.rs.next())
-//                {
-//                    cont++;
-//                }
-//               conexion.rs.close();
-//            }
-//            catch (Exception ex)
-//            {
-//               JOptionPane.showConfirmDialog(null,"Ya estas registrado " );
-//            }
-//         return cont;
-//    }
 //    public void Mostrar()
 //        {
 //           

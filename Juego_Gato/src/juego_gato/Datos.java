@@ -1,18 +1,12 @@
-
 package juego_gato;
-
 import java.awt.Color;
-import java.util.Random;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Hellen Lopez A-Alejandro Salas
+ * @author Hellen Lopez AAlejandro Salas
  */
 public class Datos extends javax.swing.JFrame {
-
-    
-   
     /**
      * Creates new form Datos
      */
@@ -38,10 +32,10 @@ public class Datos extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         Cancelar = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        rboJ1Regis = new javax.swing.JRadioButton();
+        rboJ1Nuevo = new javax.swing.JRadioButton();
+        rboJ2Regis = new javax.swing.JRadioButton();
+        rboJ2Nuevo = new javax.swing.JRadioButton();
         cmbRegis2 = new javax.swing.JComboBox();
         cmbRegis1 = new javax.swing.JComboBox();
 
@@ -52,6 +46,11 @@ public class Datos extends javax.swing.JFrame {
         txtJugador2.setBackground(new java.awt.Color(0, 0, 0));
         txtJugador2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtJugador2.setForeground(new java.awt.Color(255, 255, 255));
+        txtJugador2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtJugador2FocusLost(evt);
+            }
+        });
         getContentPane().add(txtJugador2);
         txtJugador2.setBounds(490, 250, 142, 28);
 
@@ -76,6 +75,11 @@ public class Datos extends javax.swing.JFrame {
         txtJugador1.setBackground(new java.awt.Color(0, 0, 0));
         txtJugador1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtJugador1.setForeground(new java.awt.Color(255, 255, 255));
+        txtJugador1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtJugador1FocusLost(evt);
+            }
+        });
         getContentPane().add(txtJugador1);
         txtJugador1.setBounds(150, 250, 135, 28);
 
@@ -111,25 +115,29 @@ public class Datos extends javax.swing.JFrame {
         getContentPane().add(Cancelar);
         Cancelar.setBounds(380, 300, 90, 30);
 
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Jugador Registrado");
-        getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(20, 210, 120, 23);
+        rboJ1Regis.setForeground(new java.awt.Color(255, 255, 255));
+        rboJ1Regis.setSelected(true);
+        rboJ1Regis.setText("Jugador Registrado");
+        getContentPane().add(rboJ1Regis);
+        rboJ1Regis.setBounds(20, 210, 120, 23);
 
-        jRadioButton2.setText("Nuevo jugador");
-        jRadioButton2.setToolTipText("");
-        getContentPane().add(jRadioButton2);
-        jRadioButton2.setBounds(20, 250, 120, 23);
+        rboJ1Nuevo.setForeground(new java.awt.Color(255, 255, 255));
+        rboJ1Nuevo.setText("Nuevo jugador");
+        rboJ1Nuevo.setToolTipText("");
+        getContentPane().add(rboJ1Nuevo);
+        rboJ1Nuevo.setBounds(20, 250, 120, 23);
 
-        jRadioButton3.setSelected(true);
-        jRadioButton3.setText("Jugador Registrado");
-        getContentPane().add(jRadioButton3);
-        jRadioButton3.setBounds(360, 210, 120, 23);
+        rboJ2Regis.setForeground(new java.awt.Color(255, 255, 255));
+        rboJ2Regis.setSelected(true);
+        rboJ2Regis.setText("Jugador Registrado");
+        getContentPane().add(rboJ2Regis);
+        rboJ2Regis.setBounds(360, 210, 120, 23);
 
-        jRadioButton4.setText("Nuevo jugador");
-        jRadioButton4.setToolTipText("");
-        getContentPane().add(jRadioButton4);
-        jRadioButton4.setBounds(360, 250, 120, 23);
+        rboJ2Nuevo.setForeground(new java.awt.Color(255, 255, 255));
+        rboJ2Nuevo.setText("Nuevo jugador");
+        rboJ2Nuevo.setToolTipText("");
+        getContentPane().add(rboJ2Nuevo);
+        rboJ2Nuevo.setBounds(360, 250, 120, 23);
 
         cmbRegis2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cmbRegis2);
@@ -142,21 +150,29 @@ public class Datos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    Jugador Jugador = new Jugador();
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        gato gato = new gato();
-        if((txtJugador1.getText().isEmpty())||(txtJugador2.getText().isEmpty())){
-            JOptionPane.showMessageDialog(null, "Por favor ingrese los datos que se le solicitan");
+        if(rboJ1Nuevo.isSelected()== true || rboJ1Regis.isSelected()== true){
+            if(txtJugador1.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null,"Debe de llenar correctamente los datos de jugador 1");
+            }
+        }else if(rboJ2Nuevo.isSelected()== true || rboJ2Regis.isSelected()== true){
+             if(txtJugador2.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null,"Debe de llenar correctamente los datos de jugador 2");
+            }
         }else{
+            new Rifaa().setVisible(true);// hace el panel de rifa visible
+                this.setVisible(false);
+        }
+        
+        
 //            if(gato.BuscarNombre(txtJugador1.getText())> 0){
 //                JOptionPane.showMessageDialog(null, "ya existe");
 //             }else{
-                gato.Insertar(txtJugador1.getText(), txtJugador2.getText());//Inserta los datos de los jugadores
-                JOptionPane.showMessageDialog(null, "se guardaron los datos");
-                new Rifaa().setVisible(true);// hace el panel de rifa visible
-                this.setVisible(false);
+                
+                
 //            }
-        }        
+              
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiguienteMouseClicked
@@ -171,6 +187,24 @@ public class Datos extends javax.swing.JFrame {
         new Menu_Principal().setVisible(true);// hace el el menuprincipal visible
         this.setVisible(false);
     }//GEN-LAST:event_CancelarActionPerformed
+
+    private void txtJugador1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtJugador1FocusLost
+    if(txtJugador1.getText().isEmpty()){
+     JOptionPane.showMessageDialog(null,"Debe de llenar el campo de jugador 1");
+    }else{
+     Jugador.InsertarJugador(txtJugador1.getText());//Inserta los datos de los jugadores
+     txtJugador1.enable(false);  
+    }
+    }//GEN-LAST:event_txtJugador1FocusLost
+
+    private void txtJugador2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtJugador2FocusLost
+     if(txtJugador1.getText().isEmpty()){
+     JOptionPane.showMessageDialog(null,"Debe de llenar el campo de jugador 1");
+    }else{
+     Jugador.InsertarJugador(txtJugador1.getText());//Inserta los datos de los jugadores
+     txtJugador1.enable(false);
+     }
+    }//GEN-LAST:event_txtJugador2FocusLost
 
     /**
      * @param args the command line arguments
@@ -217,10 +251,10 @@ public class Datos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLbVS;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton rboJ1Nuevo;
+    private javax.swing.JRadioButton rboJ1Regis;
+    private javax.swing.JRadioButton rboJ2Nuevo;
+    private javax.swing.JRadioButton rboJ2Regis;
     public static java.awt.TextField txtJugador1;
     public static java.awt.TextField txtJugador2;
     // End of variables declaration//GEN-END:variables
