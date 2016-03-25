@@ -11,7 +11,7 @@ import java.sql.Connection;
 
 /**
  *
- * @author Deiver Alejandro Acuña Salas, Hellen Maria Lopez Arrieta
+ * @author Hellen Lopez AAlejandro Salas
  */
 public class Principal extends javax.swing.JFrame {
 int turno,contp,contimp;
