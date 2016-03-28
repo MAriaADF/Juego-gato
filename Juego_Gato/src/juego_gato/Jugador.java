@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package juego_gato;
 
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
+import java.awt.List;
+import java.sql.*;
+import java.util.logging.*;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -42,7 +37,7 @@ public class Jugador {
             }
             catch (Exception ex)
             {
-               JOptionPane.showConfirmDialog(null,"Ya estas registrado " );
+               JOptionPane.showMessageDialog(null, "Usuario Registrado");
             }
          return cont;
     }
@@ -53,6 +48,41 @@ public class Jugador {
             {
            cmbRegis1.addItem(conexion.rs.getString(1));
            cmbRegis2.addItem(conexion.rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+   DefaultTableModel table = new DefaultTableModel();
+    Object []dato=new Object[4];
+        public void MostrarTabla(JTable jtable){
+           
+        table.addColumn("Nombre");
+        table.addColumn("Gane");
+        table.addColumn("Empates");
+        table.addColumn("Perdidas");
+         try {
+             conexion.rs = conexion.st.executeQuery("SELECT * FROM dbo.Datos_Jugadores"); 
+             while(conexion.rs.next()){
+                dato[0]= conexion.rs.getString("Nombre");
+                dato[1]= conexion.rs.getInt("Gane");
+                dato[2]= conexion.rs.getInt("Empate");
+                dato[3]= conexion.rs.getInt("Perdidas");
+                table.addRow(dato);
+             }
+             jtable.setModel(table);
+         } catch (SQLException ex) {
+             Logger.getLogger(Jugador.class.getName()).log(Level.SEVERE, null, ex);
+         }
+           
+        }
+        public void listaJuga(List listMostar){
+     try {
+            conexion.rs = conexion.st.executeQuery("SELECT * FROM dbo.Datos_Jugadores");
+            while(conexion.rs.next())
+            {
+           listMostar.addItem(conexion.rs.getString(1));
+           
             }
         } catch (SQLException ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);

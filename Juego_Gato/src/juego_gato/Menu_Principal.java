@@ -146,6 +146,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                + "juego?","Error ",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE );
         if(dec == JOptionPane.YES_OPTION){
             System.exit(0);// cierra el programa
+            
         }else if(dec == JOptionPane.NO_OPTION){
            //limpia el radiobutt
         } 

@@ -1,22 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package juego_gato;
 
+package juego_gato;
+import java.awt.Color;
+import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author Hellen Lopez A
+ * @author Hellen Lopez A- Alejandro salas
  */
 public class Estadistica extends javax.swing.JFrame {
-
     /**
      * Creates new form Estadistica
      */
     public Estadistica() {
         initComponents();
+        this.getContentPane().setBackground(Color.black);//Hace de color negro el fondo
+        new Jugador().MostrarTabla(jtableMostar);
     }
+        
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,11 +28,13 @@ public class Estadistica extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtableMostar = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtableMostar.setBackground(new java.awt.Color(0, 0, 0));
+        jtableMostar.setForeground(new java.awt.Color(255, 255, 255));
+        jtableMostar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -43,7 +45,9 @@ public class Estadistica extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jtableMostar.setGridColor(new java.awt.Color(255, 255, 255));
+        jtableMostar.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(jtableMostar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,6 +105,6 @@ public class Estadistica extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jtableMostar;
     // End of variables declaration//GEN-END:variables
 }

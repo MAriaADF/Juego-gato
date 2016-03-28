@@ -1,16 +1,11 @@
 package juego_gato;
 import java.awt.Color;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import juego_gato.Jugador;
-import juego_gato.Menu_Principal;
-import juego_gato.Rifaa;
+
 
 /**
  *
- * @author Hellen Lopez AAlejandro Salas
+ * @author Hellen Lopez A-Alejandro Salas
  */
 public class Datos extends javax.swing.JFrame {
     /**
@@ -21,6 +16,7 @@ public class Datos extends javax.swing.JFrame {
         initComponents();
         this.getContentPane().setBackground(Color.black);//Hace de color negro el fondo
         jugador.CargarCombo(cmbRegis1, cmbRegis2);
+       
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,7 +26,10 @@ public class Datos extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        GrupoJugador1 = new javax.swing.ButtonGroup();
+        GrupoJugador2 = new javax.swing.ButtonGroup();
         txtJugador2 = new java.awt.TextField();
         jLbVS = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -48,9 +47,9 @@ public class Datos extends javax.swing.JFrame {
         cmbRegis1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
 
         txtJugador2.setBackground(new java.awt.Color(0, 0, 0));
+        txtJugador2.setEnabled(false);
         txtJugador2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtJugador2.setForeground(new java.awt.Color(255, 255, 255));
         txtJugador2.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -58,28 +57,21 @@ public class Datos extends javax.swing.JFrame {
                 txtJugador2FocusLost(evt);
             }
         });
-        getContentPane().add(txtJugador2);
-        txtJugador2.setBounds(490, 250, 142, 28);
 
         jLbVS.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLbVS.setForeground(new java.awt.Color(255, 255, 255));
         jLbVS.setText("VS");
-        getContentPane().add(jLbVS);
-        jLbVS.setBounds(250, 70, 70, 58);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Jugador 1");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(90, 170, 79, 22);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Jugador 2");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(420, 170, 79, 22);
 
         txtJugador1.setBackground(new java.awt.Color(0, 0, 0));
+        txtJugador1.setEnabled(false);
         txtJugador1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtJugador1.setForeground(new java.awt.Color(255, 255, 255));
         txtJugador1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -87,8 +79,6 @@ public class Datos extends javax.swing.JFrame {
                 txtJugador1FocusLost(evt);
             }
         });
-        getContentPane().add(txtJugador1);
-        txtJugador1.setBounds(150, 250, 135, 28);
 
         btnSiguiente.setText("Siguiente");
         btnSiguiente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -101,12 +91,6 @@ public class Datos extends javax.swing.JFrame {
                 btnSiguienteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSiguiente);
-        btnSiguiente.setBounds(170, 310, 90, 30);
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(410, 40, 98, 0);
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(80, 40, 98, 0);
 
         Cancelar.setText("Cancelar");
         Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -119,48 +103,138 @@ public class Datos extends javax.swing.JFrame {
                 CancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(Cancelar);
-        Cancelar.setBounds(380, 300, 90, 30);
 
+        GrupoJugador1.add(rboJ1Regis);
         rboJ1Regis.setForeground(new java.awt.Color(255, 255, 255));
-        rboJ1Regis.setSelected(true);
         rboJ1Regis.setText("Jugador Registrado");
-        getContentPane().add(rboJ1Regis);
-        rboJ1Regis.setBounds(20, 210, 120, 23);
 
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbRegis1, org.jdesktop.beansbinding.ELProperty.create("${enabled}"), rboJ1Regis, org.jdesktop.beansbinding.BeanProperty.create("selected"));
+        bindingGroup.addBinding(binding);
+
+        rboJ1Regis.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rboJ1RegisStateChanged(evt);
+            }
+        });
+        rboJ1Regis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rboJ1RegisActionPerformed(evt);
+            }
+        });
+
+        GrupoJugador1.add(rboJ1Nuevo);
         rboJ1Nuevo.setForeground(new java.awt.Color(255, 255, 255));
         rboJ1Nuevo.setText("Nuevo jugador");
         rboJ1Nuevo.setToolTipText("");
-        getContentPane().add(rboJ1Nuevo);
-        rboJ1Nuevo.setBounds(20, 250, 120, 23);
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txtJugador1, org.jdesktop.beansbinding.ELProperty.create("${enabled}"), rboJ1Nuevo, org.jdesktop.beansbinding.BeanProperty.create("selected"));
+        bindingGroup.addBinding(binding);
+
+        GrupoJugador2.add(rboJ2Regis);
         rboJ2Regis.setForeground(new java.awt.Color(255, 255, 255));
-        rboJ2Regis.setSelected(true);
         rboJ2Regis.setText("Jugador Registrado");
-        getContentPane().add(rboJ2Regis);
-        rboJ2Regis.setBounds(360, 210, 120, 23);
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbRegis2, org.jdesktop.beansbinding.ELProperty.create("${enabled}"), rboJ2Regis, org.jdesktop.beansbinding.BeanProperty.create("selected"));
+        bindingGroup.addBinding(binding);
+
+        GrupoJugador2.add(rboJ2Nuevo);
         rboJ2Nuevo.setForeground(new java.awt.Color(255, 255, 255));
         rboJ2Nuevo.setText("Nuevo jugador");
         rboJ2Nuevo.setToolTipText("");
-        getContentPane().add(rboJ2Nuevo);
-        rboJ2Nuevo.setBounds(360, 250, 120, 23);
 
-        getContentPane().add(cmbRegis2);
-        cmbRegis2.setBounds(490, 210, 140, 20);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txtJugador2, org.jdesktop.beansbinding.ELProperty.create("${enabled}"), rboJ2Nuevo, org.jdesktop.beansbinding.BeanProperty.create("selected"));
+        bindingGroup.addBinding(binding);
 
-        getContentPane().add(cmbRegis1);
-        cmbRegis1.setBounds(150, 210, 130, 20);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(232, 232, 232)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(jLbVS, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jLabel2)
+                .addGap(251, 251, 251)
+                .addComponent(jLabel4))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(rboJ1Regis, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(cmbRegis1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addComponent(rboJ2Regis, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(cmbRegis2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(rboJ1Nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(txtJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75)
+                .addComponent(rboJ2Nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(txtJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(170, 170, 170)
+                .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(120, 120, 120)
+                .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5))
+                .addGap(30, 30, 30)
+                .addComponent(jLbVS)
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rboJ1Regis)
+                    .addComponent(cmbRegis1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rboJ2Regis)
+                    .addComponent(cmbRegis2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rboJ1Nuevo)
+                    .addComponent(txtJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rboJ2Nuevo)
+                    .addComponent(txtJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
         cmbRegis1.getAccessibleContext().setAccessibleName("");
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     Jugador Jugador = new Jugador();
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+     
         if(rboJ1Nuevo.isSelected()== true || rboJ1Regis.isSelected()== true){
             if (rboJ1Nuevo.isSelected()== true){
                 if(txtJugador1.getText().isEmpty()){
                     JOptionPane.showMessageDialog(null,"Debe de llenar correctamente los datos de jugador 1");
+                }else{
+                    new Rifaa().setVisible(true);// hace el panel de rifa visible
+                    this.setVisible(false);
                 }
             }
         }  
@@ -168,10 +242,12 @@ public class Datos extends javax.swing.JFrame {
             if (rboJ2Nuevo.isSelected()== true){
                 if(txtJugador2.getText().isEmpty()){
                     JOptionPane.showMessageDialog(null,"Debe de llenar correctamente los datos de jugador 2");
+                }else{
+                    new Rifaa().setVisible(true);// hace el panel de rifa visible
+                    this.setVisible(false);
                 }
-            }new Rifaa().setVisible(true);// hace el panel de rifa visible
-            this.setVisible(false);
-                }
+            }
+        }
          
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
@@ -215,6 +291,14 @@ public class Datos extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_txtJugador2FocusLost
 
+    private void rboJ1RegisStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rboJ1RegisStateChanged
+        
+    }//GEN-LAST:event_rboJ1RegisStateChanged
+
+    private void rboJ1RegisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rboJ1RegisActionPerformed
+
+    }//GEN-LAST:event_rboJ1RegisActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -252,6 +336,8 @@ public class Datos extends javax.swing.JFrame {
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancelar;
+    private javax.swing.ButtonGroup GrupoJugador1;
+    private javax.swing.ButtonGroup GrupoJugador2;
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JComboBox cmbRegis1;
     private javax.swing.JComboBox cmbRegis2;
@@ -266,6 +352,7 @@ public class Datos extends javax.swing.JFrame {
     private javax.swing.JRadioButton rboJ2Regis;
     public static java.awt.TextField txtJugador1;
     public static java.awt.TextField txtJugador2;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
 }

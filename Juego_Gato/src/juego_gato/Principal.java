@@ -3,6 +3,10 @@ package juego_gato;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComboBox;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,7 +18,7 @@ import java.sql.Connection;
  * @author Hellen Lopez AAlejandro Salas
  */
 public class Principal extends javax.swing.JFrame {
-int turno,contp,contimp;
+    int turno,contp,contimp;
     boolean gano=false;//indica si ya hubo o no un gane
     boolean prueba=false;
     public JLabel[][] cuadros;//matriz para guardar los label
@@ -26,9 +30,9 @@ int turno,contp,contimp;
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
-        turno=contp=contimp=1;
+//        turno=contp=contimp=1;
         cuadros=new JLabel[][]{{lblA1,lblB1,lblC1},{lblA2,lblB2,lblC2},{lblA3,lblB3,lblC3}};//Este arreglo almacena lo label
-  
+    
     }
 
     /**
@@ -290,7 +294,7 @@ int turno,contp,contimp;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+Tablero table = new Tablero();
     private void lblA1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblA1MouseClicked
         Dato(lblA1);
     }//GEN-LAST:event_lblA1MouseClicked
@@ -308,7 +312,7 @@ int turno,contp,contimp;
     }//GEN-LAST:event_lblA2MouseClicked
 
     private void lblB2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblB2MouseClicked
-        Dato(lblB2);
+       Dato(lblB2);
     }//GEN-LAST:event_lblB2MouseClicked
 
     private void lblC2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblC2MouseClicked
@@ -328,11 +332,24 @@ int turno,contp,contimp;
     }//GEN-LAST:event_lblC3MouseClicked
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-       if(JOptionPane.showConfirmDialog(null, "Deseab guardar el juego? ")==0){
-           System.exit(0);
-           
-       }
-       
+      Tablero tablero= new Tablero();
+       int dec= JOptionPane.showConfirmDialog(null,"Desea guadar el juego?","Error ",
+               JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE );
+        if(dec == JOptionPane.YES_OPTION){
+            tablero.A1= lblA1.getText();
+            tablero.A2= lblA2.getText();
+            tablero.A3= lblA3.getText();
+            tablero.B1= lblB1.getText();
+            tablero.B2= lblB2.getText();
+            tablero.B3= lblB3.getText();
+            tablero.C1= lblC1.getText();
+            tablero.C2= lblC2.getText();
+            tablero.C3= lblC3.getText();
+           tablero.InsertarTablero(tablero);
+            System.exit(0);// cierra el programa
+        }else if(dec == JOptionPane.NO_OPTION){
+           //limpia el radiobutt
+        }
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnVmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVmenuActionPerformed
@@ -391,12 +408,35 @@ int turno,contp,contimp;
     private javax.swing.JLabel lblC1;
     private javax.swing.JLabel lblC2;
     private javax.swing.JLabel lblC3;
-    private javax.swing.JLabel lblVicJ1;
-    private javax.swing.JLabel lblVicJ2;
-    private javax.swing.JRadioButton rboJugador1;
-    private javax.swing.JRadioButton rboJugador2;
+    public static javax.swing.JLabel lblVicJ1;
+    public static javax.swing.JLabel lblVicJ2;
+    public static javax.swing.JRadioButton rboJugador1;
+    public static javax.swing.JRadioButton rboJugador2;
     // End of variables declaration//GEN-END:variables
- public void Dato(JLabel cuadro) 
+ public void Mos(){
+         Conexion conexion = new Conexion();
+     try {
+            conexion.rs = conexion.st.executeQuery("SELECT * FROM dbo.Juego");
+            while(conexion.rs.next())
+            {
+          lblA1.setText(conexion.rs.getString("A1"));
+          lblA2.setText(conexion.rs.getString("A2"));
+          lblA3.setText(conexion.rs.getString("A3"));
+          lblB1.setText(conexion.rs.getString("B1"));
+          lblB2.setText(conexion.rs.getString("B2"));
+          lblB3.setText(conexion.rs.getString("B3"));
+          lblC1.setText(conexion.rs.getString("C1"));
+          lblC2.setText(conexion.rs.getString("C2"));
+          lblC3.setText(conexion.rs.getString("C3"));
+          
+          }
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+    }
+    public void Dato(JLabel cuadro) 
     {
         if (!gano)//verifica si no se gano el juego 
         {
@@ -456,7 +496,7 @@ public void verificar(String parametro)
                 if (!gano&&contador==3)  //if si el gane se encontro vertical u horizontamente
                 {
                     if(rboJugador1.isSelected()){ // if para las victorias del jugador 1
-                      JOptionPane.showMessageDialog(null, "Ganaste");
+                      JOptionPane.showMessageDialog(null, "Ganaste: "+ rboJugador1.getText());
                       J1Victoria = J1Victoria+1; // contador de victorias del jugador 1
                       prueba = true; // booleano que devuelve true para cerrar el for
                       lblVicJ1.setText(String.valueOf(J1Victoria));
@@ -487,6 +527,14 @@ public void verificar(String parametro)
                     }
                     break;
                     }
+                }
+                if(!gano&&contador==4){
+                   if(JOptionPane.showConfirmDialog(null, "EMPATE")==0){
+                       nuevo();
+                       reinicio=true;
+                   }else{
+                       gano = false;
+                   } 
                 }
                 contador=0;
             } 

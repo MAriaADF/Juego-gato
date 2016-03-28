@@ -8,12 +8,29 @@ package juego_gato;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.*;
 
 /**
  *
  * @author Hellen Lopez A
  */
 public class gato {
+    Conexion conexion = new Conexion();
+    public void MosEstadi(JComboBox cmbRegis1,JComboBox cmbRegis2){
+     try {
+            conexion.rs = conexion.st.executeQuery("SELECT * FROM dbo.Datos_Jugadores");
+            while(conexion.rs.next())
+            {
+           cmbRegis1.addItem(conexion.rs.getString(1));
+           cmbRegis2.addItem(conexion.rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+   
 //    public void Mostrar()
 //        {
 //           
