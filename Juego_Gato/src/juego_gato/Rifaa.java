@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Hellen Lopez A
+ * @author Hellen Lopez A- Alejandro Salas 
  */
 public class Rifaa extends javax.swing.JFrame {
     Random ran = new Random();
@@ -19,12 +19,14 @@ public class Rifaa extends javax.swing.JFrame {
     /**
      * Creates new form Rifaa
      */
+    
     public Rifaa() {
         initComponents();
          this.getContentPane().setBackground(Color.black);//Hace de color negro el fondo
-        btnJugador1.setLabel(Datos.txtJugador1.getText());
-        btnJugador2.setLabel(Datos.txtJugador2.getText());
+        btnJugador1.setLabel(Jugador.nombre1);
+        btnJugador2.setLabel(Jugador.nombre2);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -123,7 +125,7 @@ public class Rifaa extends javax.swing.JFrame {
         numero1 = ran.nextInt(7);// selecciona un numero del 0 al 6
         if (numero2 != numero1){
             jLbNumJuga1.setText(Integer.toString(numero1));//convierto de int a string para mostrar el numero
-            btnJugador1.enable(false);
+            btnJugador1.enable(false); 
         }
         GaneRifa();// verifica quien gana la rifa
     }//GEN-LAST:event_btnJugador1MouseClicked
@@ -181,9 +183,12 @@ public class Rifaa extends javax.swing.JFrame {
              
             if (!jLbNumJuga1.getText().isEmpty()&&!jLbNumJuga2.getText().isEmpty()){
                if(numero1 > numero2){
-               JOptionPane.showMessageDialog(null, "El jugador que inicia es " +  Datos.txtJugador1.getText() + " con la letra X");
+               JOptionPane.showMessageDialog(null, "El jugador que inicia es " +  Jugador.nombre1 + " con la letra X");
                } else {
-               JOptionPane.showMessageDialog(null, "El jugador que inicia es " + Datos.txtJugador2.getText() + " con la letra X");
+               JOptionPane.showMessageDialog(null, "El jugador que inicia es " + Jugador.nombre2 + " con la letra X");
+               String temp = Jugador.nombre1;
+               Jugador.nombre1= Jugador.nombre2;
+               Jugador.nombre2= temp;
                }
                 new Principal().setVisible(true);//hace el JFrame de datos visble
                 this.setVisible(false);// hace el JFrame  Menu_Principal invisible

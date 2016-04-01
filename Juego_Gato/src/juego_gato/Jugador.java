@@ -13,7 +13,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Jugador {
      Conexion conexion = new Conexion();
-     
+     public static String nombre1;
+     public static String nombre2;
     public void InsertarJugador(String Nombre){
         Statement s;
         try {

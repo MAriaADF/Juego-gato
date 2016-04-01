@@ -14,9 +14,8 @@ public class Datos extends javax.swing.JFrame {
     Jugador jugador = new Jugador();
     public Datos() {
         initComponents();
-        this.getContentPane().setBackground(Color.black);//Hace de color negro el fondo
-        jugador.CargarCombo(cmbRegis1, cmbRegis2);
-       
+        this.getContentPane().setBackground(Color.black);//It makes black background
+        jugador.CargarCombo(cmbRegis1, cmbRegis2);//Loads the data from the database and then display the in combobox
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,11 +80,6 @@ public class Datos extends javax.swing.JFrame {
         });
 
         btnSiguiente.setText("Siguiente");
-        btnSiguiente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSiguienteMouseClicked(evt);
-            }
-        });
         btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSiguienteActionPerformed(evt);
@@ -110,17 +104,6 @@ public class Datos extends javax.swing.JFrame {
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbRegis1, org.jdesktop.beansbinding.ELProperty.create("${enabled}"), rboJ1Regis, org.jdesktop.beansbinding.BeanProperty.create("selected"));
         bindingGroup.addBinding(binding);
-
-        rboJ1Regis.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                rboJ1RegisStateChanged(evt);
-            }
-        });
-        rboJ1Regis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rboJ1RegisActionPerformed(evt);
-            }
-        });
 
         GrupoJugador1.add(rboJ1Nuevo);
         rboJ1Nuevo.setForeground(new java.awt.Color(255, 255, 255));
@@ -227,33 +210,22 @@ public class Datos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     Jugador Jugador = new Jugador();
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-     
-        if(rboJ1Nuevo.isSelected()== true || rboJ1Regis.isSelected()== true){
-            if (rboJ1Nuevo.isSelected()== true){
-                if(txtJugador1.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(null,"Debe de llenar correctamente los datos de jugador 1");
-                }else{
-                    new Rifaa().setVisible(true);// hace el panel de rifa visible
-                    this.setVisible(false);
-                }
+        
+        if (seguir()>0){
+           if(Jugador.nombre1.equals(Jugador.nombre2)){
+            JOptionPane.showMessageDialog(null,"Lo siento, verifique que a ambos "
+                    + "Jugadores no tengan el mismo nombre ");
+            }else{
+                new Rifaa().setVisible(true);// hace el panel de rifa visible
+                this.setVisible(false);
+                
             }
-        }  
-        if(rboJ2Nuevo.isSelected()== true || rboJ2Regis.isSelected()== true){
-            if (rboJ2Nuevo.isSelected()== true){
-                if(txtJugador2.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(null,"Debe de llenar correctamente los datos de jugador 2");
-                }else{
-                    new Rifaa().setVisible(true);// hace el panel de rifa visible
-                    this.setVisible(false);
-                }
-            }
+        }else {
+            JOptionPane.showMessageDialog(null,"Debe de llenar correctamente los"
+                    + " datos de jugador ");
         }
-         
+        
     }//GEN-LAST:event_btnSiguienteActionPerformed
-
-    private void btnSiguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiguienteMouseClicked
-
-    }//GEN-LAST:event_btnSiguienteMouseClicked
 
     private void CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelarMouseClicked
         // TODO add your handling code here:
@@ -265,39 +237,12 @@ public class Datos extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void txtJugador1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtJugador1FocusLost
-       if(txtJugador1.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Debe de llenar correctamente los datos de jugador 1");
-       }else{          
-            if(Jugador.BuscarNombre(txtJugador1.getText())>0){
-              JOptionPane.showConfirmDialog(null,"Ya estas registrado " );
-            }else{
-                Jugador.InsertarJugador(txtJugador1.getText());//Inserta los datos de los jugadores
-                txtJugador1.enable(false);
-            }
-       }
+        
     }//GEN-LAST:event_txtJugador1FocusLost
 
-            
     private void txtJugador2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtJugador2FocusLost
-     if(txtJugador2.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Debe de llenar correctamente los datos de jugador 2");
-       }else{          
-            if(Jugador.BuscarNombre(txtJugador2.getText())>0){
-              JOptionPane.showConfirmDialog(null,"Ya estas registrado " );
-            }else{
-                Jugador.InsertarJugador(txtJugador2.getText());//Inserta los datos de los jugadores
-                txtJugador2.enable(false);
-            }
-       }
+       
     }//GEN-LAST:event_txtJugador2FocusLost
-
-    private void rboJ1RegisStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rboJ1RegisStateChanged
-        
-    }//GEN-LAST:event_rboJ1RegisStateChanged
-
-    private void rboJ1RegisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rboJ1RegisActionPerformed
-
-    }//GEN-LAST:event_rboJ1RegisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,21 +284,65 @@ public class Datos extends javax.swing.JFrame {
     private javax.swing.ButtonGroup GrupoJugador1;
     private javax.swing.ButtonGroup GrupoJugador2;
     private javax.swing.JButton btnSiguiente;
-    private javax.swing.JComboBox cmbRegis1;
+    public static javax.swing.JComboBox cmbRegis1;
     private javax.swing.JComboBox cmbRegis2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLbVS;
-    private javax.swing.JRadioButton rboJ1Nuevo;
-    private javax.swing.JRadioButton rboJ1Regis;
-    private javax.swing.JRadioButton rboJ2Nuevo;
-    private javax.swing.JRadioButton rboJ2Regis;
+    public static javax.swing.JRadioButton rboJ1Nuevo;
+    public static javax.swing.JRadioButton rboJ1Regis;
+    public static javax.swing.JRadioButton rboJ2Nuevo;
+    public static javax.swing.JRadioButton rboJ2Regis;
     public static java.awt.TextField txtJugador1;
     public static java.awt.TextField txtJugador2;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
+    public int seguir(){
+         int op = 0;
+        int r = 0;
+        if (rboJ1Nuevo.isSelected()== true){
+            if(!txtJugador1.getText().isEmpty()){
+                Jugador.nombre1 =txtJugador1.getText();
+                while(op <7){
+                    if(Jugador.BuscarNombre(Jugador.nombre1)>0){
+                        Jugador.nombre1= JOptionPane.showInputDialog(null, "ya existe el jugador 1, por favor ingrese otro:");   
+                    }else{
+                        break;
+                    }
+                }
+                
+                Jugador.InsertarJugador(Jugador.nombre1);
+                r = 2;
+            }else{
+            r = 0;
+            }
+        }else{
+            Jugador.nombre1= (String) cmbRegis1.getSelectedItem();     
+            r= 2;
+        }
+        if(rboJ2Nuevo.isSelected()== true){
+            if(!txtJugador2.getText().isEmpty()){
+                Jugador.nombre2 =txtJugador2.getText();
+                while(op <7){
+                    if(Jugador.BuscarNombre(Jugador.nombre2)>0){
+                        Jugador.nombre2= JOptionPane.showInputDialog(null, "ya existe el jugador 2, por favor ingrese otro:");   
+                    }else{
+                        break;
+                    }
+                }
+            Jugador.InsertarJugador(Jugador.nombre2);
+             r = 2;
+                
+            }else{
+            r = 0;
+            }
+        }else{
+             Jugador.nombre2= (String) cmbRegis2.getSelectedItem();   
+              r= 2;
+        }
+        return r;
+    }
 }
-

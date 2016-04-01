@@ -193,7 +193,6 @@
         <Property name="text" type="java.lang.String" value="Siguiente"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSiguienteMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSiguienteActionPerformed"/>
       </Events>
     </Component>
@@ -223,10 +222,9 @@
       <BindingProperties>
         <BindingProperty name="selected" source="cmbRegis1" sourcePath="${enabled}" target="rboJ1Regis" targetPath="selected" updateStrategy="0" immediately="false"/>
       </BindingProperties>
-      <Events>
-        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="rboJ1RegisStateChanged"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rboJ1RegisActionPerformed"/>
-      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rboJ1Nuevo">
       <Properties>
@@ -242,6 +240,9 @@
       <BindingProperties>
         <BindingProperty name="selected" source="txtJugador1" sourcePath="${enabled}" target="rboJ1Nuevo" targetPath="selected" updateStrategy="0" immediately="false"/>
       </BindingProperties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rboJ2Regis">
       <Properties>
@@ -256,6 +257,9 @@
       <BindingProperties>
         <BindingProperty name="selected" source="cmbRegis2" sourcePath="${enabled}" target="rboJ2Regis" targetPath="selected" updateStrategy="0" immediately="false"/>
       </BindingProperties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rboJ2Nuevo">
       <Properties>
@@ -271,6 +275,9 @@
       <BindingProperties>
         <BindingProperty name="selected" source="txtJugador2" sourcePath="${enabled}" target="rboJ2Nuevo" targetPath="selected" updateStrategy="0" immediately="false"/>
       </BindingProperties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbRegis2">
       <Properties>
@@ -288,6 +295,9 @@
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
       </AccessibilityProperties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
