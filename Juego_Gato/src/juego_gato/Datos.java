@@ -1,4 +1,5 @@
 package juego_gato;
+import Clases.Jugador;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -46,6 +47,7 @@ public class Datos extends javax.swing.JFrame {
         cmbRegis1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         txtJugador2.setBackground(new java.awt.Color(0, 0, 0));
         txtJugador2.setEnabled(false);

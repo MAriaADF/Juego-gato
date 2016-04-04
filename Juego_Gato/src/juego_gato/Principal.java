@@ -1,29 +1,15 @@
 package juego_gato;
 
+import Clases.Jugador;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JComboBox;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+import Clases.*;
 /**
  *
  * @author Hellen Lopez AAlejandro Salas
  */
 public class Principal extends javax.swing.JFrame {
-    int turno,contp,contimp;
-    boolean gano=false;//indica si ya hubo o no un gane
-    boolean prueba=false;
     public JLabel[][] cuadros;//matriz para guardar los label
-    public  int J1Victoria = 0;
-    public  int J2Victoria = 0;
+    Juego juego = new Juego();
     /**
      * Creates new form Principal
      */
@@ -34,10 +20,9 @@ public class Principal extends javax.swing.JFrame {
         lblJugador2.setText(Jugador.nombre2);
         rboJugador1.setText(Jugador.nombre1);
         rboJugador2.setText(Jugador.nombre2);
-        turno=contp=contimp=1;
         cuadros=new JLabel[][]{{lblA1,lblB1,lblC1},{lblA2,lblB2,lblC2},{lblA3,lblB3,lblC3}};//Este arreglo almacena lo label
+  
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,6 +32,7 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        gpJugadores = new javax.swing.ButtonGroup();
         rboJugador1 = new javax.swing.JRadioButton();
         rboJugador2 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
@@ -67,12 +53,15 @@ public class Principal extends javax.swing.JFrame {
         btnVmenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
+        gpJugadores.add(rboJugador1);
         rboJugador1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         rboJugador1.setSelected(true);
         rboJugador1.setEnabled(false);
         rboJugador1.setName("rboJugador1"); // NOI18N
 
+        gpJugadores.add(rboJugador2);
         rboJugador2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         rboJugador2.setEnabled(false);
         rboJugador2.setName("rboJugador2"); // NOI18N
@@ -300,63 +289,46 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-Tablero table = new Tablero();
+
     private void lblA1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblA1MouseClicked
-        Dato(lblA1);
+         juego.Dato(lblA1);
     }//GEN-LAST:event_lblA1MouseClicked
 
     private void lblB1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblB1MouseClicked
-        Dato(lblB1);
+        juego.Dato(lblB1);
     }//GEN-LAST:event_lblB1MouseClicked
 
     private void lblC1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblC1MouseClicked
-        Dato(lblC1);
+        juego.Dato(lblC1);
     }//GEN-LAST:event_lblC1MouseClicked
 
     private void lblA2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblA2MouseClicked
-        Dato(lblA2);
+        juego.Dato(lblA2);
     }//GEN-LAST:event_lblA2MouseClicked
 
     private void lblB2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblB2MouseClicked
-       Dato(lblB2);
+       juego.Dato(lblB2);
     }//GEN-LAST:event_lblB2MouseClicked
 
     private void lblC2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblC2MouseClicked
-        Dato(lblC2);
+        juego.Dato(lblC2);
     }//GEN-LAST:event_lblC2MouseClicked
 
     private void lblA3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblA3MouseClicked
-        Dato(lblA3);
+        juego.Dato(lblA3);
     }//GEN-LAST:event_lblA3MouseClicked
 
     private void lblB3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblB3MouseClicked
-        Dato(lblB3);
+        juego.Dato(lblB3);
     }//GEN-LAST:event_lblB3MouseClicked
 
     private void lblC3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblC3MouseClicked
-       Dato(lblC3);
+      juego.Dato(lblC3);
     }//GEN-LAST:event_lblC3MouseClicked
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-      Tablero tablero= new Tablero();
-       int dec= JOptionPane.showConfirmDialog(null,"Desea guadar el juego?","Advertencia ",
-               JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE );
-        if(dec == JOptionPane.YES_OPTION){
-            tablero.A1= lblA1.getText();
-            tablero.A2= lblA2.getText();
-            tablero.A3= lblA3.getText();
-            tablero.B1= lblB1.getText();
-            tablero.B2= lblB2.getText();
-            tablero.B3= lblB3.getText();
-            tablero.C1= lblC1.getText();
-            tablero.C2= lblC2.getText();
-            tablero.C3= lblC3.getText();
-            
-           tablero.InsertarTablero(tablero);
-            System.exit(0);// cierra el programa
-        }else if(dec == JOptionPane.NO_OPTION){
-           //limpia el radiobutt
-        }
+      PartidaGuardada partida = new PartidaGuardada();
+        partida.GuardarJuego();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnVmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVmenuActionPerformed
@@ -364,55 +336,20 @@ Tablero table = new Tablero();
         this.setVisible(false);// hace el JFrame  Menu_Principal invisible
     }//GEN-LAST:event_btnVmenuActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Principal().setVisible(true);
-                 Connection miConexion;
-            }
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnVmenu;
+    private javax.swing.ButtonGroup gpJugadores;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblA1;
-    private javax.swing.JLabel lblA2;
-    private javax.swing.JLabel lblA3;
-    private javax.swing.JLabel lblB1;
-    private javax.swing.JLabel lblB2;
-    private javax.swing.JLabel lblB3;
-    private javax.swing.JLabel lblC1;
-    private javax.swing.JLabel lblC2;
-    private javax.swing.JLabel lblC3;
+    public static javax.swing.JLabel lblA1;
+    public static javax.swing.JLabel lblA2;
+    public static javax.swing.JLabel lblA3;
+    public static javax.swing.JLabel lblB1;
+    public static javax.swing.JLabel lblB2;
+    public static javax.swing.JLabel lblB3;
+    public static javax.swing.JLabel lblC1;
+    public static javax.swing.JLabel lblC2;
+    public static javax.swing.JLabel lblC3;
     private javax.swing.JLabel lblJugador1;
     private javax.swing.JLabel lblJugador2;
     public static javax.swing.JLabel lblVicJ1;
@@ -420,194 +357,5 @@ Tablero table = new Tablero();
     public static javax.swing.JRadioButton rboJugador1;
     public static javax.swing.JRadioButton rboJugador2;
     // End of variables declaration//GEN-END:variables
- public void Mos(){
-         Conexion conexion = new Conexion();
-     try {
-            conexion.rs = conexion.st.executeQuery("SELECT * FROM dbo.Juego");
-            while(conexion.rs.next())
-            {
-          cuadros[0][0].setText(conexion.rs.getString("A1"));
-          cuadros[1][0].setText(conexion.rs.getString("A2"));
-          cuadros[2][0].setText(conexion.rs.getString("A3"));
-          cuadros[0][1].setText(conexion.rs.getString("B1"));
-          cuadros[1][1].setText(conexion.rs.getString("B2"));
-          cuadros[2][1].setText(conexion.rs.getString("B3"));
-          cuadros[0][2].setText(conexion.rs.getString("C1"));
-          cuadros[1][2].setText(conexion.rs.getString("C2"));
-          cuadros[2][2].setText(conexion.rs.getString("C3"));
-          }  
-        } catch (SQLException ex) {
-            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    public void Dato(JLabel cuadro) 
-    {
-        if (!gano)//verifica si no se gano el juego 
-        
-            if(cuadro.getText().equals(""))//comprueba que el label no tenga letras
-            {
-                if (rboJugador1.isSelected())//verifica el valor del turno para saber que letra asigna 
-                {
-                   cuadro.setText("x");
-                    if (contimp>=3)//comprueba que ya esten almenos 3 x en el tablero 
-                    {
-                        verificar("x");//verifica si la x ya esta en tablero
-                        
-                    }
-                    contimp++;//cuenta las x
-                    rboJugador1.setSelected(false);
-                    rboJugador2.setSelected(true);
-                } 
-                else
-                {
-                    cuadro.setText("o");
-                    if (contp>=3) //comprueba que ya esten almenos 3 "0" en el tablero 
-                    {
-                        verificar("o");//verifica si la o ya esta en el tablero
-                        
-                    }
-                    rboJugador1.setSelected(true);
-                    rboJugador2.setSelected(false);
-                    contp++;
-                }
-                turno++;//cuenta las o
-            }
-        }     
-public void verificar(String parametro) 
-    {
-        int contador=0;
-        int a,b; 
-        boolean reinicio=false;//inidica si ya se reinicio el juego
-        for (int x = 0; x < 2; x++) 
-        {
-            for (int i = 0; i < cuadros.length; i++) 
-            {  
-                for (int j = 0; j < cuadros.length; j++) 
-                {
-                    if (x==0) {
-                      a=i;//posicion de la fila
-                      b=j;//posicion de la columna 
-                    }else
-                    {
-                        a=j;//posicion de la fila
-                        b=i;//posicion de la columna 
-                    }
-                    if (cuadros[a][b].getText().equals(parametro)) {
-                        contador++;//cuenta las de una misma letra
-                    }
-                }
-                if (!gano&&contador==3)  //if si el gane se encontro vertical u horizontamente
-                {
-                    if(rboJugador1.isSelected()){ // if para las victorias del jugador 1
-                      JOptionPane.showMessageDialog(null, "Ganaste: "+ rboJugador1.getText());
-                      J1Victoria = J1Victoria+1; // contador de victorias del jugador 1
-                      prueba = true; // booleano que devuelve true para cerrar el for
-                      lblVicJ1.setText(String.valueOf(J1Victoria));
-                       if(JOptionPane.showConfirmDialog(null, "Desea iniciar un nuevo juego? ","Tablero",
-               JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE)==0)
-                    {
-                        nuevo();//reinicia el juego
-                        reinicio=true;//inidica q el juego se reinicio
-                    }
-                    else
-                    {
-                        gano=false;                        
-                    }
-                    break;
-                    }
-                    if(rboJugador2.isSelected()){ // if para contar las victorias del jugador 2
-                      JOptionPane.showMessageDialog(null, "Ganaste");
-                      J2Victoria = J2Victoria+1; // contador de victorias del jugador 2
-                      prueba = true; // booleano que devuelve true para cerrar el for
-                      lblVicJ2.setText(String.valueOf(J2Victoria)); 
-                       if(JOptionPane.showConfirmDialog(null, "Desea iniciar un nuevo juego? ")==0)
-                    {
-                        nuevo();//reinicia el juego
-                        reinicio=true;//inidica q el juego se reinicio
-                    }
-                    else
-                    {
-                        gano=false;                        
-                    }
-                    break;
-                    }
-                }
-                if(!gano&&contador==4){
-                   if(JOptionPane.showConfirmDialog(null, "EMPATE")==0){
-                       nuevo();
-                       reinicio=true;
-                   }else{
-                       gano = false;
-                   } 
-                }
-                contador=0;
-            } 
-            if(prueba){
-                prueba = false;
-                break;
-                
-            }
-        }
-        if (!reinicio) {// if si el gane se encuentra de esquina a esquina
-            int pos;
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < cuadros.length; j++) {
-                   if (i==0) {
-                        pos=j;
-                    } else {
-                        pos=2-j;
-                    }
-                    if (cuadros[j][pos].getText().equals(parametro)) {
-                        contador++;
-                    }
-                }
-                if (contador==3) {
-                    if (rboJugador1.isSelected()){
-                        JOptionPane.showMessageDialog(null, "Ganaste");
-                        J1Victoria = J1Victoria+1; // contador de victorias del jugador 1
-                        prueba = true; // booleano que devuelve true para cerrar el for
-                        lblVicJ1.setText(String.valueOf(J1Victoria));
-                        JOptionPane.showMessageDialog(null, "ganaste");
-                        if(JOptionPane.showConfirmDialog(null, "Desea iniciar un nuevo juego? ")==0)
-                    {
-                        nuevo();
-                        break;
-                    }
-                    else
-                    {
-                        gano=false;
-                        break;
-                    }
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Ganaste");
-                        J2Victoria = J2Victoria+1; // contador de victorias del jugador 2
-                        prueba = true; // booleano que devuelve true para cerrar el for
-                        lblVicJ2.setText(String.valueOf(J2Victoria));  
-                    if(JOptionPane.showConfirmDialog(null, "Desea iniciar un nuevo juego? ")==0)
-                    {
-                        nuevo();
-                        break;
-                    }
-                    else
-                    {
-                        gano=false;
-                        break;
-                    }
-                    }
-                }
-                contador=0;
-            }
-        }
-    }
-// Meotodo para reiniciar el juego
- public void nuevo() {
-        gano=false;
-        turno=contp=contimp=2;
-        for (int i = 0; i < cuadros.length; i++) {
-            for (int j = 0; j < cuadros.length; j++) {
-                cuadros[i][j].setText("");
-            }
-        }
-    }
-
+  
 }

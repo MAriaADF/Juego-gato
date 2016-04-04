@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package juego_gato;
+package Clases;
 import java.sql.*;
 /**
  *
- * @author Hellen Lopez AAlejandro Salas
+ * @author Hellen Lopez A-Alejandro Salas
  */
 public class Conexion {
- protected Connection con;
- protected Statement st;
- protected ResultSet rs;
+ public Connection con;
+ public Statement st;
+ public ResultSet rs;
  public static Conexion cone = new Conexion();
  
     public Conexion() {

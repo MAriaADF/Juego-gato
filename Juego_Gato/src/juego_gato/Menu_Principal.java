@@ -7,6 +7,7 @@ package juego_gato;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import Clases.PartidaGuardada;
 
 /**
  *
@@ -43,6 +44,7 @@ public class Menu_Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
+        setUndecorated(true);
 
         rbnContinua.setBackground(new java.awt.Color(0, 0, 0));
         rbnContinua.setFont(new java.awt.Font("Corbel", 3, 18)); // NOI18N
@@ -94,7 +96,6 @@ public class Menu_Principal extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(105, 30, 77));
         jLabel1.setText("Juego de gato");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Hellen Lopez A\\Documents\\NetBeansProjects\\Menu\\Imagenes\\gato.jpg")); // NOI18N
         jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,14 +143,14 @@ public class Menu_Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnSalirActionPerformed
-       int dec= JOptionPane.showConfirmDialog(null,"Seguro que deseas salir del "
-               + "juego?","Error ",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE );
-        if(dec == JOptionPane.YES_OPTION){
+        int dec = JOptionPane.showConfirmDialog(null, "Seguro que deseas salir del "
+                + "juego?", "Error ", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (dec == JOptionPane.YES_OPTION) {
             System.exit(0);// cierra el programa
-            
-        }else if(dec == JOptionPane.NO_OPTION){
-           //limpia el radiobutt
-        } 
+
+        } else if (dec == JOptionPane.NO_OPTION) {
+            //limpia el radiobutt
+        }
     }//GEN-LAST:event_rbnSalirActionPerformed
 
     private void rbnIniciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnIniciaActionPerformed
@@ -159,15 +160,20 @@ public class Menu_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_rbnIniciaActionPerformed
 
     private void rbnContinuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnContinuaActionPerformed
-        
-        Principal area = new Principal();
-       // new  Principal().Mos();
-        area.setVisible(true);//hace el JFrame de area de juego visble
-        this.setVisible(false);// hace el JFrame  Menu_Principal invisible
+        PartidaGuardada partida = new PartidaGuardada();
+        if (partida.BuscarPartida()) {
+            Principal area = new Principal();
+            area.setVisible(true);
+            partida.MostrarJuego();
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encuentran partidas guardadas");
+            rbnContinua.setSelected(false);
+        }
     }//GEN-LAST:event_rbnContinuaActionPerformed
 
     private void rbnResvisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnResvisarActionPerformed
-        
+        new ListaJugadores().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_rbnResvisarActionPerformed
 
     /**
@@ -202,14 +208,14 @@ public class Menu_Principal extends javax.swing.JFrame {
             public void run() {
                 new Menu_Principal().setVisible(true);
             }
-        });
+        }
+        );
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup Grupo_rbn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JRadioButton rbnContinua;
+    public static javax.swing.JRadioButton rbnContinua;
     private javax.swing.JRadioButton rbnEstadistica;
     private javax.swing.JRadioButton rbnInicia;
     private javax.swing.JRadioButton rbnResvisar;

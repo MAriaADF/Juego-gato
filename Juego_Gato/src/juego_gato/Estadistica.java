@@ -1,12 +1,14 @@
-
 package juego_gato;
+
+import Clases.Jugador;
 import java.awt.Color;
-import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Hellen Lopez A- Alejandro salas
  */
 public class Estadistica extends javax.swing.JFrame {
+
     /**
      * Creates new form Estadistica
      */
@@ -15,8 +17,6 @@ public class Estadistica extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.black);//Hace de color negro el fondo
         new Jugador().MostrarTabla(jtableMostar);
     }
-        
-        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,6 +31,7 @@ public class Estadistica extends javax.swing.JFrame {
         jtableMostar = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jtableMostar.setBackground(new java.awt.Color(0, 0, 0));
         jtableMostar.setForeground(new java.awt.Color(255, 255, 255));
