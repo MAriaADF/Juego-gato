@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Hellen Lopez A-Alejandro Salas
+ * @author Hellen Lopez, Alejandro Salas
  */
 public class Datos extends javax.swing.JFrame {
     /**
@@ -47,7 +47,6 @@ public class Datos extends javax.swing.JFrame {
         cmbRegis1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         txtJugador2.setBackground(new java.awt.Color(0, 0, 0));
         txtJugador2.setEnabled(false);
@@ -302,6 +301,11 @@ public class Datos extends javax.swing.JFrame {
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     Metodo que verifica que los datos no se repitan y inserta tambien
+     * datos que no se hayan registrado
+     * @return
+     */
     public int seguir(){
          int op = 0;
         int r = 0;
@@ -337,7 +341,6 @@ public class Datos extends javax.swing.JFrame {
                 }
             Jugador.InsertarJugador(Jugador.nombre2);
              r = 2;
-                
             }else{
             r = 0;
             }

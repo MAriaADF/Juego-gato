@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Hellen Lopez A- Alejandro Salas 
+ * @author Hellen Lopez, Alejandro Salas 
  */
 public class Rifaa extends javax.swing.JFrame {
     Random ran = new Random();
@@ -46,7 +46,6 @@ public class Rifaa extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(new java.awt.Color(0, 0, 0));
-        setUndecorated(true);
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N

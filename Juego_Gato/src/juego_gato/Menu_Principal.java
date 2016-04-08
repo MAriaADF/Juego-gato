@@ -4,14 +4,13 @@
  * and open the template in the editor.
  */
 package juego_gato;
-
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import Clases.PartidaGuardada;
 
 /**
  *
- * @author Hellen Lopez AAlejandro Salas
+ * @author Hellen Lopez, Alejandro Salas
  */
 public class Menu_Principal extends javax.swing.JFrame {
 
@@ -44,7 +43,6 @@ public class Menu_Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
-        setUndecorated(true);
 
         rbnContinua.setBackground(new java.awt.Color(0, 0, 0));
         rbnContinua.setFont(new java.awt.Font("Corbel", 3, 18)); // NOI18N
@@ -81,6 +79,11 @@ public class Menu_Principal extends javax.swing.JFrame {
         rbnEstadistica.setFont(new java.awt.Font("Corbel", 3, 18)); // NOI18N
         rbnEstadistica.setForeground(new java.awt.Color(255, 255, 255));
         rbnEstadistica.setText("Estadistica del jugador");
+        rbnEstadistica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbnEstadisticaActionPerformed(evt);
+            }
+        });
 
         rbnSalir.setBackground(new java.awt.Color(0, 0, 0));
         rbnSalir.setFont(new java.awt.Font("Corbel", 3, 18)); // NOI18N
@@ -147,9 +150,6 @@ public class Menu_Principal extends javax.swing.JFrame {
                 + "juego?", "Error ", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (dec == JOptionPane.YES_OPTION) {
             System.exit(0);// cierra el programa
-
-        } else if (dec == JOptionPane.NO_OPTION) {
-            //limpia el radiobutt
         }
     }//GEN-LAST:event_rbnSalirActionPerformed
 
@@ -175,6 +175,11 @@ public class Menu_Principal extends javax.swing.JFrame {
         new ListaJugadores().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_rbnResvisarActionPerformed
+
+    private void rbnEstadisticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnEstadisticaActionPerformed
+        new Estadistica().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_rbnEstadisticaActionPerformed
 
     /**
      * @param args the command line arguments

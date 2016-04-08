@@ -5,7 +5,7 @@ import java.awt.Color;
 
 /**
  *
- * @author Hellen Lopez A- Alejandro salas
+ * @author Hellen Lopez, Alejandro salas
  */
 public class Estadistica extends javax.swing.JFrame {
 
@@ -29,9 +29,9 @@ public class Estadistica extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jtableMostar = new javax.swing.JTable();
+        btnSalir2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         jtableMostar.setBackground(new java.awt.Color(0, 0, 0));
         jtableMostar.setForeground(new java.awt.Color(255, 255, 255));
@@ -50,24 +50,45 @@ public class Estadistica extends javax.swing.JFrame {
         jtableMostar.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(jtableMostar);
 
+        btnSalir2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnSalir2.setText("Salir");
+        btnSalir2.setName("btnSalir"); // NOI18N
+        btnSalir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalir2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(btnSalir2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 25, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalir2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(119, 119, 119))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir2ActionPerformed
+        new Menu_Principal().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnSalir2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,6 +126,7 @@ public class Estadistica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSalir2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtableMostar;
     // End of variables declaration//GEN-END:variables

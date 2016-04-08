@@ -3,26 +3,30 @@ package juego_gato;
 import Clases.Jugador;
 import javax.swing.JLabel;
 import Clases.*;
+import java.awt.Color;
+
 /**
  *
- * @author Hellen Lopez AAlejandro Salas
+ * @author Hellen Lopez, Alejandro Salas
  */
 public class Principal extends javax.swing.JFrame {
+
     public JLabel[][] cuadros;//matriz para guardar los label
     Juego juego = new Juego();
+
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
+        this.getContentPane().setBackground(Color.black);//Hace de color negro el fondo
         this.setLocationRelativeTo(null);
-        lblJugador1.setText(Jugador.nombre1);
-        lblJugador2.setText(Jugador.nombre2);
         rboJugador1.setText(Jugador.nombre1);
         rboJugador2.setText(Jugador.nombre2);
-        cuadros=new JLabel[][]{{lblA1,lblB1,lblC1},{lblA2,lblB2,lblC2},{lblA3,lblB3,lblC3}};//Este arreglo almacena lo label
-  
+        cuadros = new JLabel[][]{{lblA1, lblB1, lblC1}, {lblA2, lblB2, lblC2}, {lblA3, lblB3, lblC3}};//Este arreglo almacena lo label
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,8 +40,6 @@ public class Principal extends javax.swing.JFrame {
         rboJugador1 = new javax.swing.JRadioButton();
         rboJugador2 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        lblJugador1 = new javax.swing.JLabel();
-        lblJugador2 = new javax.swing.JLabel();
         lblVicJ1 = new javax.swing.JLabel();
         lblVicJ2 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -50,39 +52,43 @@ public class Principal extends javax.swing.JFrame {
         lblC1 = new javax.swing.JLabel();
         lblC2 = new javax.swing.JLabel();
         lblC3 = new javax.swing.JLabel();
-        btnVmenu = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        lblEmpates = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         gpJugadores.add(rboJugador1);
         rboJugador1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        rboJugador1.setForeground(new java.awt.Color(255, 255, 255));
         rboJugador1.setSelected(true);
         rboJugador1.setEnabled(false);
         rboJugador1.setName("rboJugador1"); // NOI18N
+        rboJugador1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rboJugador1ActionPerformed(evt);
+            }
+        });
 
         gpJugadores.add(rboJugador2);
         rboJugador2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        rboJugador2.setForeground(new java.awt.Color(255, 255, 255));
         rboJugador2.setEnabled(false);
         rboJugador2.setName("rboJugador2"); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("VICTORIAS");
         jLabel1.setName("lblVictorias"); // NOI18N
 
-        lblJugador1.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        lblJugador1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        lblJugador2.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        lblJugador2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
         lblVicJ1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblVicJ1.setForeground(new java.awt.Color(255, 255, 255));
         lblVicJ1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVicJ1.setText("0");
         lblVicJ1.setName("lblVicJ1"); // NOI18N
 
         lblVicJ2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblVicJ2.setForeground(new java.awt.Color(255, 255, 255));
         lblVicJ2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVicJ2.setText("0");
         lblVicJ2.setName("lblVicJ2"); // NOI18N
@@ -97,9 +103,10 @@ public class Principal extends javax.swing.JFrame {
         });
 
         lblA1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblA1.setForeground(new java.awt.Color(255, 255, 255));
         lblA1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblA1.setAlignmentY(0.0F);
-        lblA1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        lblA1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         lblA1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblA1MouseClicked(evt);
@@ -107,8 +114,9 @@ public class Principal extends javax.swing.JFrame {
         });
 
         lblA2.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblA2.setForeground(new java.awt.Color(255, 255, 255));
         lblA2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblA2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        lblA2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         lblA2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblA2MouseClicked(evt);
@@ -116,8 +124,9 @@ public class Principal extends javax.swing.JFrame {
         });
 
         lblA3.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblA3.setForeground(new java.awt.Color(255, 255, 255));
         lblA3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblA3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        lblA3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         lblA3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblA3MouseClicked(evt);
@@ -125,8 +134,9 @@ public class Principal extends javax.swing.JFrame {
         });
 
         lblB1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblB1.setForeground(new java.awt.Color(255, 255, 255));
         lblB1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblB1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        lblB1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         lblB1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblB1MouseClicked(evt);
@@ -134,8 +144,9 @@ public class Principal extends javax.swing.JFrame {
         });
 
         lblB2.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblB2.setForeground(new java.awt.Color(255, 255, 255));
         lblB2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblB2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        lblB2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         lblB2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblB2MouseClicked(evt);
@@ -143,8 +154,9 @@ public class Principal extends javax.swing.JFrame {
         });
 
         lblB3.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblB3.setForeground(new java.awt.Color(255, 255, 255));
         lblB3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblB3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        lblB3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         lblB3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblB3MouseClicked(evt);
@@ -153,8 +165,9 @@ public class Principal extends javax.swing.JFrame {
 
         lblC1.setBackground(new java.awt.Color(255, 255, 255));
         lblC1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblC1.setForeground(new java.awt.Color(255, 255, 255));
         lblC1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblC1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        lblC1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         lblC1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblC1MouseClicked(evt);
@@ -162,8 +175,9 @@ public class Principal extends javax.swing.JFrame {
         });
 
         lblC2.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblC2.setForeground(new java.awt.Color(255, 255, 255));
         lblC2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblC2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        lblC2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         lblC2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblC2MouseClicked(evt);
@@ -171,127 +185,117 @@ public class Principal extends javax.swing.JFrame {
         });
 
         lblC3.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblC3.setForeground(new java.awt.Color(255, 255, 255));
         lblC3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblC3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        lblC3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         lblC3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblC3MouseClicked(evt);
             }
         });
 
-        btnVmenu.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnVmenu.setText("Menu");
-        btnVmenu.setName("btnSalir"); // NOI18N
-        btnVmenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVmenuActionPerformed(evt);
-            }
-        });
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("EMPATES");
+
+        lblEmpates.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblEmpates.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpates.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEmpates.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(388, 388, 388)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(388, 388, 388)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(86, 86, 86)
-                                .addComponent(lblVicJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(lblJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(86, 86, 86)
-                                .addComponent(lblJugador2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(lblVicJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(lblA1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(lblB1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(lblC1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(91, 91, 91)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(rboJugador1, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                            .addComponent(rboJugador2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(lblA2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(lblB2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(lblC2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(91, 91, 91)
-                        .addComponent(btnSalir))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
                         .addComponent(lblA3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(lblB3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
-                        .addComponent(lblC3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(91, 91, 91)
-                        .addComponent(btnVmenu)))
-                .addContainerGap())
+                        .addComponent(lblC3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblA1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(lblB1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(lblC1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblA2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(lblB2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(lblC2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblEmpates, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(rboJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(rboJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(38, 38, 38)
+                                    .addComponent(lblVicJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(39, 39, 39)
+                                    .addComponent(lblVicJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(32, 32, 32))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(rboJugador1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(lblVicJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblA1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblB1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblC1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblA2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblB2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblC2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblA3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblB3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblC3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(lblJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(lblJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(lblVicJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblA1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblB1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblC1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(rboJugador1)
+                        .addComponent(lblVicJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(rboJugador2)))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblA2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblB2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblC2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblA3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblB3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblC3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(btnVmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(rboJugador2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblVicJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblEmpates, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblA1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblA1MouseClicked
-         juego.Dato(lblA1);
+        juego.Dato(lblA1);
     }//GEN-LAST:event_lblA1MouseClicked
 
     private void lblB1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblB1MouseClicked
@@ -307,7 +311,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblA2MouseClicked
 
     private void lblB2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblB2MouseClicked
-       juego.Dato(lblB2);
+        juego.Dato(lblB2);
     }//GEN-LAST:event_lblB2MouseClicked
 
     private void lblC2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblC2MouseClicked
@@ -323,24 +327,23 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblB3MouseClicked
 
     private void lblC3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblC3MouseClicked
-      juego.Dato(lblC3);
+        juego.Dato(lblC3);
     }//GEN-LAST:event_lblC3MouseClicked
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-      PartidaGuardada partida = new PartidaGuardada();
+        PartidaGuardada partida = new PartidaGuardada();
         partida.GuardarJuego();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnVmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVmenuActionPerformed
-        new Menu_Principal().setVisible(true);//hace el JFrame de datos visble
-        this.setVisible(false);// hace el JFrame  Menu_Principal invisible
-    }//GEN-LAST:event_btnVmenuActionPerformed
+    private void rboJugador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rboJugador1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rboJugador1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton btnVmenu;
     private javax.swing.ButtonGroup gpJugadores;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     public static javax.swing.JLabel lblA1;
     public static javax.swing.JLabel lblA2;
     public static javax.swing.JLabel lblA3;
@@ -350,12 +353,11 @@ public class Principal extends javax.swing.JFrame {
     public static javax.swing.JLabel lblC1;
     public static javax.swing.JLabel lblC2;
     public static javax.swing.JLabel lblC3;
-    private javax.swing.JLabel lblJugador1;
-    private javax.swing.JLabel lblJugador2;
+    public static javax.swing.JLabel lblEmpates;
     public static javax.swing.JLabel lblVicJ1;
     public static javax.swing.JLabel lblVicJ2;
     public static javax.swing.JRadioButton rboJugador1;
     public static javax.swing.JRadioButton rboJugador2;
     // End of variables declaration//GEN-END:variables
-  
+
 }
